@@ -1,0 +1,20 @@
+- Implement views
+    -Login view
+    -Profile view
+    -User home page
+- Set up models
+    +User
+    +Tweet
++ Create and perform migrations
+- Implement url routing
+    +Add urls.py to twitter app
+    +Create urlpatterns in twitter.urls
+    +Add urlpattern in twitter_clone.urls to include twitter.urls
+- Configure settings
+    +Add our app to 'installed apps'
+- Create templates
+    +base.html
+    +login.html
+    +feed.html
+- Create static files
+    +Copy styles.css from the sample_templates folder

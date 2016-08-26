@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+        <div class="row">
+
+            <div class="col-sm-2"></div>
+            <div class="col-sm-8">
+
+                <div class="row">
+                    <form role="form" class='tweet-form' action="" method="POST">
+                        <input type='hidden' name='csrfmiddlewaretoken' value='EWLMomFcnNj2hpWbcxx2M4Puhk3YztiH' />
+                        <div class="form-group ">
+                            <textarea class="form-control" name="content" placeholder="Write your tweet here..." required></textarea>
+
+
+                        </div>
+                        <button type="submit" class="btn btn-info pull-right">Submit</button>
+                    </form>
+                </div>
+
+                <div class="row tweet-feed">
+                    
+                    {% for tweet in tweets %}
+                    <div class="well well-large tweet-container">
+                        
+                        <!-- DELETE TWEET BUTTON -->
+                        {% if user_logged_in %}
+                        <form id='delete-tweet-form-9' action="/tweet/9/delete?next=/" method="POST">
+                            <input type='hidden' name='csrfmiddlewaretoken' value='EWLMomFcnNj2hpWbcxx2M4Puhk3YztiH' />
+                            <button type="submit" class="close" title="Delete this tweet"><span aria-hidden="true">&times;</span></button>
+                        </form>
+                        {% endif %}
+                        
+                        <!-- USER HANDLE AND DATE CREATED -->
+                        <div>
+                            <strong>@{{ tweet.user.username }}</strong>
+                            <span class="label label-primary">{{ tweet.created_date }}</span>
+                        </div>
+                        
+                        <!-- TWEET CONTENT -->
+                        <div class='tweet-content'>{{ tweet.text }}</div>
+                        
+                    </div>
+                    {% endfor %}
+
+
+                </div>
+            </div>
+            <div class="col-sm-2"></div>
+            
+{% endblock %}
